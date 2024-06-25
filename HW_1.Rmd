@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r Chunk_1}
 library(tidyverse)
 library(ggplot2)
-folder_path <- "/Users/ivanzamorano/Downloads/Datasets" # use your own path here
+folder_path <- "/Users/ivanzamorano/Desktop/HW1/Datasets" # use your own path here
 setwd(folder_path) # passing the object into the function
 ```
 
@@ -48,7 +48,7 @@ person_type_proportions <- prop.table(person_type1)
 
 pedestrian_proportion <- person_type_proportions["PEDESTRIAN"]
 
-pedestrian_proportion)
+pedestrian_proportion
 
 ```
 
@@ -73,18 +73,10 @@ How many people in the dataset are age 25 or younger and are passengers? Use PER
 
 ```{r Chunk_5}
 people_filtered3 <- people %>%
-    filter(AGE <= 25)
+    filter(AGE <= 25 & PERSON_TYPE == "PASSENGER")
 
-person_type2 <- table(people_filtered3$PERSON_TYPE)
-# Convert the frequency table into proportions
-
-person_type_proportions <- prop.table(person_type2)
-
-# Extract the proportion of pedestrians
-
-passangers_proportion <- person_type_proportions["PASSENGER"]
-
-passangers_proportion
+count_25_younger_passenger<- nrow(people_filtered3)
+count_25_younger_passenger
 ```
 
 
